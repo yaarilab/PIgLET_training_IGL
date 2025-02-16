@@ -536,7 +536,7 @@ fwrite(df,"${outfile}", sep = "\t")
 
 process asc_to_iuis {
 
-publishDir params.outdir, mode: 'copy', saveAs: {filename -> if (filename =~ /.*rep-passed_iuis_naming.tsv$/) "pre_genotype/$filename"}
+publishDir params.outdir, mode: 'copy', saveAs: {filename -> if (filename =~ /.*iuis_naming.tsv$/) "pre_genotype/$filename"}
 publishDir params.outdir, mode: 'copy', saveAs: {filename -> if (filename =~ /v_germline_iuis_naming.fasta$/) "iuis_germline/$filename"}
 input:
  set val(name),file(airrFile) from g_119_outputFileTSV0_g_97
@@ -544,7 +544,7 @@ input:
  set val(name2),file(allele_threshold_table_file) from g_101_outputFileTSV_g_97
 
 output:
- set val("${name}"),file("*rep-passed_iuis_naming.tsv")  into g_97_outputFileTSV00
+ set val("${name}"),file("*iuis_naming.tsv")  into g_97_outputFileTSV00
  set val("${name1}"),file("v_germline_iuis_naming.fasta")  into g_97_germlineFastaFile11
 
 script:
